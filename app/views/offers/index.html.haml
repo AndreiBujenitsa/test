@@ -1,0 +1,22 @@
+%table.table
+  %thead
+    %tr
+      %th Name
+      %th Advertiser
+      %th Payout
+      %th
+
+  %tbody
+    - @offers.each do |offer|
+      %tr
+        %td= best_in_place offer, :name
+        %td= best_in_place offer, :advertiser
+        %td= best_in_place offer, :payout
+
+        %td.text-right= link_to 'X', offer, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", title: "Remove"
+
+  %tfoot
+    %tr
+      %th.text-right{colspan: 4}= link_to 'New Offer', new_offer_path, class: "btn btn-primary"
+
+

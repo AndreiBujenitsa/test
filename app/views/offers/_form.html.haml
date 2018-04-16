@@ -1,0 +1,26 @@
+= form_for @offer do |f|
+  - if @offer.errors.any?
+    .alert.alert-danger
+      %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+        %span{"aria-hidden" => "true"} ×
+
+      - @offer.errors.full_messages.each do |message|
+        %br
+        = message
+
+  .form-group
+    = f.label :name, class: "col-md-4 control-label"
+    .col-md-8
+      = f.text_field :name, class: "form-control"
+  .form-group
+    = f.label :advertiser, class: "col-md-4 control-label"
+    .col-md-8
+      = f.text_field :advertiser, class: "form-control"
+  .form-group
+    = f.label :payout, class: "col-md-4 control-label"
+    .col-md-8
+      = f.text_field :payout, class: "form-control"
+  .form-group
+    .col-md-8
+      = f.submit 'Save', class: "btn btn-primary"
+      = link_to 'Back', offers_path, class: "btn btn-secondary"
